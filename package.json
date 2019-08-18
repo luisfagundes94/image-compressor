@@ -23,6 +23,7 @@
   "homepage": "https://github.com/psyduck94/image-compressor#readme",
   "devDependencies": {
     "compress-images": "^1.5.8",
-    "electron": "^6.0.2"
+    "electron": "^6.0.2",
+    "electron-packager": "^14.0.4"
   }
 }

@@ -25,5 +25,9 @@
     "compress-images": "^1.5.8",
     "electron": "^6.0.2",
     "electron-packager": "^14.0.4"
+  },
+  "dependencies": {
+    "compress-images": "^1.5.8",
+    "electron": "^6.0.2"
   }
 }

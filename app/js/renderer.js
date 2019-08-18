@@ -15,6 +15,8 @@ const compressButton = document.querySelector('#compress');
 compressButton.addEventListener('click', function () {
     console.log('compressButtonClicked');
     compressImages(inputFolderPath, outputFolderPath);
+    inputFolderPath = '';
+    outputFolderPath = '';
 });
 
 function selectInputFolder() {
@@ -75,8 +77,11 @@ function compressImages(inputFolderPath, outputFolderPath) {
                 }
 
                 if (completed) {
+                    formattedInputFolderPath = '';
+                    formattedOutputFolderPath = '';
                     showMessageDialogBox('Sucesso!', `Suas imagens foram comprimidas com sucesso!`);
                     showUI();
+                    clearFolderPathText();
                 }
                 console.log(error);
                 console.log(statistic);
@@ -85,6 +90,7 @@ function compressImages(inputFolderPath, outputFolderPath) {
     } else {
         showMessageDialogBox("Ops!", "Primeiro escolha as pastas de origem e saida!");
         console.log('Primeiro escolha as pastas de origem e saida!');
+        showUI()
     }
 }
 

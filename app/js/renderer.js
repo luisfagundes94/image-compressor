@@ -57,14 +57,14 @@ function compressImages(inputFolderPath, outputFolderPath) {
             { png: { engine: 'pngquant', command: ['--quality=20-50'] } },
             { svg: { engine: 'svgo', command: '--multipass' } },
             { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web'] } }, function (error, completed, statistic) {
-                // if (error) {
-                //     showMessageDialogBox('Ocorreu um erro!', error.message.toString());
-                // }
+                if (error) {
+                    showMessageDialogBox('Ocorreu um erro!', error.message.toString());
+                }
 
-                // if (completed) {
-                //     showMessageDialogBox('Sucesso!', `Suas imagens foram comprimidas com
-                //     sucesso!`);
-                // }
+                if (completed) {
+                    showMessageDialogBox('Sucesso!', `Suas imagens foram comprimidas com
+                    sucesso!`);
+                }
                console.log(error);
                console.log(completed);
                console.log(statistic);

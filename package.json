@@ -1,0 +1,28 @@
+{
+  "name": "image-compressor",
+  "version": "1.0.0",
+  "description": "Aplicativo para reduzir tamanho de imagens",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psyduck94/image-compressor.git"
+  },
+  "keywords": [
+    "image",
+    "compressor"
+  ],
+  "author": "Luis Felipe Fagundes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psyduck94/image-compressor/issues"
+  },
+  "homepage": "https://github.com/psyduck94/image-compressor#readme",
+  "devDependencies": {
+    "compress-images": "^1.5.8",
+    "electron": "^6.0.2"
+  }
+}

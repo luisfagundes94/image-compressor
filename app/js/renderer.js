@@ -62,8 +62,7 @@ function compressImages(inputFolderPath, outputFolderPath) {
                 }
 
                 if (completed) {
-                    showMessageDialogBox('Sucesso!', `Suas imagens foram comprimidas com
-                    sucesso!`);
+                    showMessageDialogBox('Sucesso!', `Suas imagens foram comprimidas com sucesso!`);
                 }
                console.log(error);
                console.log(completed);

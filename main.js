@@ -12,7 +12,7 @@ function createWindow () {
   });
 
   
-  win.removeMenu();
+  //win.removeMenu();
   win.loadFile('app/index.html');
 }
 

@@ -1,19 +1,19 @@
 const { dialog } = require('electron').remote;
 const compress_images = require('compress-images');
+
 var inputFolderPath = '';
 var outputFolderPath = '';
 
 showUI();
 
 const inputFolderButton = document.querySelector('#input-folder');
-inputFolderButton.addEventListener('click', selectInputFolder)
+inputFolderButton.addEventListener('click', selectInputFolder);
 
 const outputFolderButton = document.querySelector('#output-folder');
 outputFolderButton.addEventListener('click', selectOutputFolder);
 
 const compressButton = document.querySelector('#compress');
 compressButton.addEventListener('click', function () {
-    console.log('compressButtonClicked');
     compressImages(inputFolderPath, outputFolderPath);
     inputFolderPath = '';
     outputFolderPath = '';
@@ -57,14 +57,8 @@ function compressImages(inputFolderPath, outputFolderPath) {
 
     if (inputFolderPath && outputFolderPath) {
 
-        let formattedInputFolderPath = inputFolderPath + "\\*.{jpg,JPG,jpeg,JPEG,gif,png,svg}";
-        formattedInputFolderPath = formattedInputFolderPath.replace(/\\/g, '/');
-
-        let formattedOutputFolderPath = outputFolderPath + "\\";
-        formattedOutputFolderPath = formattedOutputFolderPath.replace(/\\/g, '/');
-
-        console.log('input folder ', formattedInputFolderPath);
-        console.log('output folder ', formattedOutputFolderPath);
+        let formattedInputFolderPath = formatInputFolderPath(inputFolderPath);
+        let formattedOutputFolderPath = formatOutputFolderPath(outputFolderPath);
 
         compress_images(formattedInputFolderPath, formattedOutputFolderPath, { compress_force: false, statistic: true, autoupdate: true }, false,
             { jpg: { engine: 'mozjpeg', command: ['-quality', '60'] } },
@@ -83,14 +77,10 @@ function compressImages(inputFolderPath, outputFolderPath) {
                     showUI();
                     clearFolderPathText();
                 }
-                console.log(error);
-                console.log(statistic);
-                console.log(completed);
             });
     } else {
         showMessageDialogBox("Ops!", "Primeiro escolha as pastas de origem e saida!");
-        console.log('Primeiro escolha as pastas de origem e saida!');
-        showUI()
+        showUI();
     }
 }
 
@@ -100,10 +90,19 @@ function showMessageDialogBox(title, message) {
         message: message,
         buttons: ['Ok'],
     };
-    dialog.showMessageBox(null, options, function (response, checkBoxResponse) {
+    dialog.showMessageBox(null, options, function (response) {
         console.log(response);
     });
+}
 
+function formatInputFolderPath(inputFolderPath) {
+    let formattedInputFolderPath = inputFolderPath + "\\*.{jpg,JPG,jpeg,JPEG,gif,png,svg}";
+    return formattedInputFolderPath.replace(/\\/g, '/');
+}
+
+function formatOutputFolderPath(outputFolderPath) {
+    let formattedOutputFolderPath = outputFolderPath + "\\";
+    return formattedOutputFolderPath.replace(/\\/g, '/');
 }
 
 function clearFolderPathText() {

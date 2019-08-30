@@ -6,6 +6,13 @@ var outputFolderPath = '';
 
 showUI();
 
+const slider = document.getElementById('myRange');
+const output = document.getElementById('demo');
+output.innerHTML = slider.value;
+slider.oninput = function() {
+    output.innerHTML = this.value;
+}
+
 const inputFolderButton = document.querySelector('#input-folder');
 inputFolderButton.addEventListener('click', selectInputFolder);
 
@@ -14,10 +21,11 @@ outputFolderButton.addEventListener('click', selectOutputFolder);
 
 const compressButton = document.querySelector('#compress');
 compressButton.addEventListener('click', function () {
-    compressImages(inputFolderPath, outputFolderPath);
+    compressImages(inputFolderPath, outputFolderPath, slider.value);
     inputFolderPath = '';
     outputFolderPath = '';
 });
+
 
 function selectInputFolder() {
     dialog.showOpenDialog({
@@ -50,7 +58,7 @@ function createFoldersPathText(folderPathText, folderType, folderId) {
     }
 }
 
-function compressImages(inputFolderPath, outputFolderPath) {
+function compressImages(inputFolderPath, outputFolderPath, quality) {
 
     clearFolderPathText();
     hideUI();
@@ -61,8 +69,8 @@ function compressImages(inputFolderPath, outputFolderPath) {
         let formattedOutputFolderPath = formatOutputFolderPath(outputFolderPath);
 
         compress_images(formattedInputFolderPath, formattedOutputFolderPath, { compress_force: false, statistic: true, autoupdate: true }, false,
-            { jpg: { engine: 'mozjpeg', command: ['-quality', '60'] } },
-            { png: { engine: 'pngquant', command: ['--quality=20-50'] } },
+            { jpg: { engine: 'mozjpeg', command: ['-quality', `${quality}`] } },
+            { png: { engine: 'pngquant', command: [`--quality=${quality}`] } },
             { svg: { engine: 'svgo', command: '--multipass' } },
             { gif: { engine: 'gifsicle', command: ['--colors', '64', '--use-col=web'] } }, function (error, completed, statistic) {
                 if (error) {
@@ -115,8 +123,8 @@ function hideUI() {
     document.querySelector('#input-folder').style.display = 'none';
     document.querySelector('#output-folder').style.display = 'none';
     document.querySelector('#compress').style.display = 'none';
-    document.querySelector('#logo').style.display = 'none';
     document.querySelector('#loading-icon').style.display = 'block';
+    document.querySelector('.slidecontainer').style.display = 'none';
 }
 
 function showUI() {
@@ -124,6 +132,6 @@ function showUI() {
     document.querySelector('#input-folder').style.display = 'block';
     document.querySelector('#output-folder').style.display = 'block';
     document.querySelector('#compress').style.display = 'block';
-    document.querySelector('#logo').style.display = 'block';
     document.querySelector('#loading-icon').style.display = 'none';
+    document.querySelector('.slidecontainer').style.display = 'block';
 }

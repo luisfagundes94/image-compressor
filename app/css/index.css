@@ -14,11 +14,18 @@ html {
 
 p {
     color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+span {
+  color: white;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
 }
 
 img {
     text-align: center;
-    margin-top: 7.5%;
+    margin-top: 6.5%;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -34,13 +41,12 @@ h1{
 }
 
 .wrapper {
-    text-align: center;
-}
-
-.button-wrapper {
-    display: inline-block;
-    margin: auto;
-    width: 30%;
+  text-align: center;
+  position: absolute;
+  width: 30%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
 }
 
 .button {
@@ -48,7 +54,6 @@ h1{
     padding: 8% 10%;
     width: 100%;
     text-align: center;
-    font-weight: bold;
     outline: none;
     display: block;
     border: 1px solid white;
@@ -117,4 +122,42 @@ h1{
     transform: translateX(-50%);
     margin-top: -32px;
     display: none;
+}
+
+.slidecontainer {
+  margin-bottom: 20%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #dbdbdb54;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
 }

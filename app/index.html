@@ -16,17 +16,18 @@
             <div></div>
         </div>
     </div>
-    <img id="logo" src="../app/img/icon2.png" width="200px">
 
     <div class="wrapper">
-        <div class="button-wrapper">
-            <input class="button" id="input-folder" type="button" value="Escolher Pasta Origem">
-            <input class="button" id="output-folder" type="button" value="Escolher Pasta Destino">
-            <input class="button" id="compress" type="button" value="Comprimir">
-
-            <p id="input"></p>
-            <p id="output"></p>
+        <div class="slidecontainer">
+            <input type="range" min="10" max="90" value="50" class="slider" id="myRange">
+            <p>Qualidade da imagem: <span id="demo"></span><span>%</span></p>
         </div>
+        <input class="button" id="input-folder" type="button" value="Escolher Pasta Origem">
+        <input class="button" id="output-folder" type="button" value="Escolher Pasta Destino">
+        <input class="button" id="compress" type="button" value="Comprimir">
+
+        <p id="input"></p>
+        <p id="output"></p>
     </div>
 
 
